@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Troy · Pet Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{--ink:#0f172a;--muted:#64748b;--bg:#f8fafc;--card:#fff;--line:#e2e8f0;--blue:#1e3a8a;--blue2:#1e3a8a;--violet:#1e3a8a;--mint:#e6f4ea;--soft:#f1f5f9;--shadow:0 10px 40px rgba(30,41,59,.025);--r:20px}
+*{box-sizing:border-box}html{color-scheme:light}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased}button,input,select,textarea{font:inherit}button{cursor:pointer;transition:all .2s ease-out}button:active{transform:scale(.98)}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #1e3a8a;outline-offset:2px}.app{max-width:1460px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:26px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border:1px solid var(--line);border-radius:13px;background:#fff;display:grid;place-items:center;font-size:23px}h1{font-size:19px;font-weight:800;letter-spacing:-.04em;margin:0}.sub{font-size:11px;color:var(--muted);margin-top:4px}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn,.mini{border:1px solid var(--line);background:#fff;color:var(--ink);padding:11px 15px;border-radius:12px;font-size:12px;font-weight:700;box-shadow:none}.btn:hover,.mini:hover{background:#f1f5f9}.btn.primary{background:#0f172a;color:white;border-color:#0f172a}.btn.primary:hover{background:#1e3a8a}.btn.danger{background:#fdf2f2;color:#7f1d1d;border-color:#f5dddd}.layout{display:grid;grid-template-columns:255px minmax(0,1fr);gap:26px}.sidebar{position:sticky;top:18px;height:max-content;background:white;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow)}.switch{display:flex;gap:8px;margin-bottom:14px}.switch select{flex:1;min-width:0;border:1px solid var(--line);background:white;padding:11px;border-radius:11px;font-weight:700;color:var(--ink)}.petcard,.profilehero{border:1px solid var(--line);border-radius:18px;padding:19px;color:var(--ink);background:#fff;position:relative}.petrow{display:flex;justify-content:space-between;align-items:flex-start}.avatar{width:60px;height:60px;border-radius:16px;background:#f1f5f9;border:1px solid var(--line);display:grid;place-items:center;font-size:32px}.edit{border:1px solid var(--line);background:#fff;color:var(--muted);padding:8px 10px;border-radius:10px;font-size:11px;font-weight:700}.petname,.profilename{font-family:'DM Serif Display',Georgia,serif;font-size:37px;font-weight:400;letter-spacing:-.025em;margin-top:15px}.petmeta{font-size:12px;color:var(--muted);margin-top:4px}.facts,.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}.fact,.tag{padding:7px 9px;border-radius:9px;background:#f8fafc;border:1px solid var(--line);font-size:10px;font-weight:700;color:#475569}.nav{display:grid;gap:2px;margin-top:16px}.nav button{border:0;border-left:2px solid transparent;background:transparent;padding:12px 10px;border-radius:0;text-align:left;color:var(--muted);font-size:12px;font-weight:600;display:flex;align-items:center;gap:11px}.nav button.active{border-left-color:#1e3a8a;color:#0f172a;font-weight:800;background:#f8fafc}.ico{width:25px;height:25px;display:grid;place-items:center;font-size:18px}.profile-strip{display:flex;align-items:center;gap:12px;margin-bottom:20px;background:white;border:1px solid var(--line);border-radius:16px;padding:10px 12px;overflow:hidden}.profile-strip-label,.label,.dlabel,.vax-detail-label{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:#94a3b8;font-weight:800}.profile-chips{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;flex:1;padding:2px}.profile-chips::-webkit-scrollbar{display:none}.pet-chip{flex:0 0 auto;border:1px solid var(--line);background:white;color:var(--ink);border-radius:11px;padding:6px 11px 6px 7px;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700}.pet-chip .chip-avatar{width:30px;height:30px;border-radius:9px;background:#f1f5f9;display:grid;place-items:center;font-size:17px}.pet-chip.active{background:#f1f5f9;border-color:#94a3b8}.add-pet-chip{flex:0 0 auto;width:38px;height:38px;border-radius:11px;border:1px dashed #94a3b8;background:white;color:#1e3a8a;font-size:20px}.section{display:none}.section.active{display:block;animation:fadein .2s ease-out}@keyframes fadein{from{opacity:.65;transform:translateY(3px)}to{opacity:1;transform:none}}.hero{display:grid;grid-template-columns:1.35fr .65fr;gap:16px;margin-bottom:16px}.hero-main,.card,.stat{background:white;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow)}.hero-main{min-height:260px}.kicker{display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#94a3b8}.hero-title{font-family:'DM Serif Display',Georgia,serif;font-size:64px;font-weight:400;line-height:1.05;letter-spacing:-.035em;margin:20px 0 8px}.hero-age{font-size:14px;font-weight:600;color:var(--muted)}.vax-status{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:8px 11px;border-radius:9px;font-size:11px;font-weight:800}.vax-status.ok,.badge.done{background:#e6f4ea;color:#064e3b}.vax-status.due{background:#fdf2f2;color:#7f1d1d}.vax-status.ok:before{content:'✓'}.vax-status.due:before{content:'!';font-weight:900}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:19px}.chip{padding:8px 10px;border-radius:9px;background:#f8fafc;border:1px solid var(--line);font-size:11px;font-weight:600;color:#475569}.next{padding:24px}.big{font-size:30px;font-weight:800;letter-spacing:-.04em;margin-top:18px}.title{font-size:14px;font-weight:800;margin-top:8px}.muted{color:var(--muted);font-size:12px;line-height:1.6}.count{margin-top:20px;padding:13px;border-radius:12px;background:#f8fafc;display:flex;justify-content:space-between;gap:8px;font-weight:700;color:#334155;font-size:12px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}.stat{padding:19px}.stat .n{font-size:28px;font-weight:800;letter-spacing:-.05em;margin-top:10px}.stat .k{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#94a3b8;font-weight:800}.stat .f{font-size:10px;color:var(--muted);margin-top:6px}.stat .n.dateMetric{font-size:20px}.bento{display:grid;grid-template-columns:1.08fr .92fr;gap:16px}.cardhead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:17px}.cardtitle{font-family:'DM Serif Display',Georgia,serif;font-size:22px;font-weight:400}.cardsub{font-size:11px;color:var(--muted);margin-top:4px}.timeline,.weightlist,.notes{display:grid;gap:0}.item,.weightrow,.notecard{padding:15px 4px;border-bottom:1px solid var(--line);background:white}.item{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:12px;align-items:start}.date{font-size:11px;color:var(--muted);font-weight:600}.ititle{font-size:12px;font-weight:750}.idesc{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.5}.badge{padding:6px 9px;border-radius:8px;font-size:10px;font-weight:750;white-space:nowrap}.badge.future{background:#eff4fb;color:#1e3a8a}.badge.note{background:#f1f5f9;color:#475569}.chart{height:260px}canvas{width:100%;height:100%}.head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;margin-bottom:19px}.head h2{font-family:'DM Serif Display',Georgia,serif;margin:0;font-size:37px;font-weight:400;letter-spacing:-.025em}.head p{margin:5px 0 0;color:var(--muted);font-size:12px}.input,.select,.textarea{width:100%;min-width:0;max-width:100%;border:1px solid var(--line);background:#fff;color:var(--ink);padding:12px 13px;border-radius:11px;outline:none;font-size:16px}.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.filters .input{max-width:360px}.tablewrap{overflow:auto;border-radius:18px}table{width:100%;border-collapse:collapse;min-width:800px;background:white}th,td{padding:17px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#94a3b8;background:#fbfcfd}td{font-size:12px}.coverage{color:var(--muted);line-height:1.6}.rowbtns{display:flex;gap:6px;flex-wrap:wrap}.mini{padding:7px 10px;font-size:10px;border-radius:9px}.vaccine-cards{display:none}.vax-card{background:white;border:1px solid var(--line);border-radius:15px;overflow:hidden}.vax-card-main{width:100%;border:0;background:white;color:var(--ink);padding:17px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;text-align:left;align-items:center}.vax-card-topline{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:9px}.vax-date{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.06em}.vax-name{font-size:14px;font-weight:800;line-height:1.4}.vax-summary{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.vax-chevron{width:28px;height:28px;border-radius:9px;background:#f8fafc;display:grid;place-items:center;color:var(--muted);transition:.2s}.vax-card.open .vax-chevron{transform:rotate(180deg)}.vax-details{display:none;padding:4px 17px 17px;border-top:1px solid var(--line);background:#fcfdff}.vax-card.open .vax-details{display:block}.vax-detail-row{padding-top:13px}.vax-detail-value{font-size:12px;color:#475569;line-height:1.6;margin-top:5px}.vax-actions{display:flex;gap:8px;margin-top:15px}.vax-actions .mini{flex:1;padding:10px}.profilegrid{display:grid;grid-template-columns:340px minmax(0,1fr);gap:16px}.profilehero{padding:24px}.profilehero .avatar{width:90px;height:90px;font-size:45px}.profilename{font-size:44px}.details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.detail{padding:16px;border-radius:12px;background:#f8fafc;border:1px solid var(--line)}.dvalue{margin-top:8px;font-size:14px;font-weight:750;overflow-wrap:anywhere}.weightrow{display:flex;justify-content:space-between;gap:12px}.notes{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.notecard{border:1px solid var(--line);border-radius:14px;padding:17px}.notecard h4{margin:7px 0}.notecard p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}.modalbg{display:none;position:fixed;inset:0;background:rgba(15,23,42,.32);backdrop-filter:blur(6px);z-index:1000;align-items:center;justify-content:center;padding:18px}.modalbg.show{display:flex}.modal{width:min(660px,100%);max-height:90dvh;overflow:auto;background:white;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 24px 75px rgba(15,23,42,.12)}.modal h3{font-family:'DM Serif Display',Georgia,serif;font-size:29px;font-weight:400;margin:0 0 22px}.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.group{display:grid;gap:7px;min-width:0}.group.full{grid-column:1/-1}label{font-size:10px;color:var(--muted);font-weight:800;letter-spacing:.06em}.modalacts{display:flex;justify-content:flex-end;gap:9px;margin-top:22px;flex-wrap:wrap}.toast{position:fixed;right:20px;bottom:24px;background:#0f172a;color:white;padding:13px 16px;border-radius:12px;opacity:0;transform:translateY(8px);transition:.2s;z-index:1200;font-size:12px;font-weight:700;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}.mobile{display:none}
+@media(max-width:1050px){.layout{grid-template-columns:1fr}.sidebar{position:static}.nav{grid-template-columns:repeat(6,minmax(0,1fr))}.nav button{justify-content:center}.hero{grid-template-columns:1fr}.profilegrid{grid-template-columns:1fr}}
+@media(max-width:760px){.app{padding:14px 13px calc(95px + env(safe-area-inset-bottom))}.top{align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:18px}.actions{width:100%}.actions .btn{flex:1;padding:10px 7px}.sidebar{display:none}.hero{display:grid;grid-template-columns:1fr;gap:12px}.hero-main{min-height:0;padding:23px}.hero-title{font-size:49px}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{padding:16px}.stat .n{font-size:24px;overflow-wrap:anywhere}.bento{grid-template-columns:1fr;gap:12px}.head{flex-direction:column;align-items:stretch}.head .btn{width:100%}.details,.notes{grid-template-columns:1fr}.form{grid-template-columns:1fr}.group.full{grid-column:auto}.item{grid-template-columns:minmax(0,1fr) auto}.item .date{grid-column:1/-1}.mobile{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));position:fixed;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border:1px solid var(--line);border-radius:16px;padding:7px 3px;box-shadow:0 10px 40px rgba(30,41,59,.07);z-index:900}.mobile button{border:0;border-top:2px solid transparent;background:transparent;color:#94a3b8;padding:7px 0;border-radius:0;font-size:9px;font-weight:700;display:grid;place-items:center;gap:4px;min-width:0}.mobile button span{font-size:18px}.mobile button.active{border-top-color:#1e3a8a;color:#0f172a}.profile-strip{margin-bottom:14px;padding:9px;border-radius:14px}.profile-strip-label{display:none}.pet-chip{padding:6px 9px 6px 6px}.add-pet-chip{width:36px;height:36px}#vaccines .filters{display:grid;grid-template-columns:minmax(0,1fr) 125px;gap:9px}#vaccines .filters .input{max-width:none}#vaccines .filters .select{width:100%;max-width:100%!important}#vaccines .table-card{display:none}#vaccines .vaccine-cards{display:grid;gap:10px}.modalbg{align-items:flex-end;padding:0}.modal{width:100%;max-height:calc(92dvh - env(safe-area-inset-bottom));border-radius:24px 24px 0 0;padding:24px 18px calc(18px + env(safe-area-inset-bottom));animation:sheetin .22s ease-out}@keyframes sheetin{from{transform:translateY(35px);opacity:.8}to{transform:translateY(0);opacity:1}}.modalacts{position:sticky;bottom:0;background:white;padding-top:12px}.toast{bottom:calc(95px + env(safe-area-inset-bottom));left:18px;right:18px;text-align:center}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand"><div class="logo">🐾</div><div><h1>Troy</h1><div class="sub">Salud y bienestar de tus mascotas</div></div></div>
+    <div class="actions"><button class="btn" onclick="exportData()">Exportar</button><button class="btn" onclick="document.getElementById('importFile').click()">Importar</button><input id="importFile" hidden type="file" accept=".json" onchange="importData(event)"><button class="btn primary" onclick="openPetModal()">+ Mascota</button></div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="switch"><select id="petSelect" onchange="switchPet(this.value)"></select><button class="btn" onclick="openPetModal()">+</button></div>
+      <div class="petcard">
+        <div class="petrow"><div class="avatar" id="petAvatar">🐶</div><button class="edit" onclick="openPetModal(activePet())">Editar perfil</button></div>
+        <div class="petname" id="petName">Troy</div>
+        <div class="petmeta" id="petMeta"></div>
+        <div class="facts"><span class="fact" id="petAge"></span><span class="fact" id="petWeightMini"></span></div>
+      </div>
+      <div class="nav">
+        <button class="active" data-section="dashboard"><span class="ico">⌂</span>Resumen</button>
+        <button data-section="profile"><span class="ico">◉</span>Perfil</button>
+        <button data-section="vaccines"><span class="ico">✦</span>Vacunas</button>
+        <button data-section="weight"><span class="ico">↗</span>Peso</button>
+        <button data-section="appointments"><span class="ico">◷</span>Citas</button>
+        <button data-section="notes"><span class="ico">✎</span>Notas</button>
+      </div>
+    </aside>
+
+    <main>
+      <div class="profile-strip" aria-label="Selector de mascotas">
+        <div class="profile-strip-label">Mascotas</div>
+        <div class="profile-chips" id="profileChips"></div>
+        <button class="add-pet-chip" onclick="openPetModal()" aria-label="Agregar mascota" title="Agregar mascota">+</button>
+      </div>
+      <section id="dashboard" class="section active">
+        <div class="hero">
+          <div class="hero-main">
+            <span class="kicker">● Perfil activo</span>
+            <div class="hero-title" id="heroTitle"></div>
+            <div class="hero-age" id="heroAge"></div>
+            <div class="vax-status ok" id="heroVaxStatus">Vacunas al día</div>
+            <div class="chips"><span class="chip" id="chipSpecies"></span><span class="chip" id="chipLastWeight"></span><span class="chip" id="chipNextVax"></span></div>
+          </div>
+          <div class="card next">
+            <div class="label">Próxima cita</div><div class="big" id="nextDate">—</div><div class="title" id="nextTitle">Sin cita programada</div><div class="muted" id="nextNote"></div><div class="count"><span>Cuenta regresiva</span><span id="nextDays">—</span></div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="k">Último peso</div><div class="n" id="statWeight">—</div><div class="f" id="statWeightDate">Sin registros</div></div>
+          <div class="stat"><div class="k">Cambio de peso</div><div class="n" id="statWeightChange">—</div><div class="f">Vs. registro anterior</div></div>
+          <div class="stat"><div class="k">Próxima vacuna</div><div class="n dateMetric" id="statNextVax">—</div><div class="f" id="statNextVaxName">Sin refuerzo programado</div></div>
+          <div class="stat"><div class="k">Citas futuras</div><div class="n" id="statAppts">0</div><div class="f">Programadas</div></div>
+        </div>
+        <div class="bento">
+          <div class="card"><div class="cardhead"><div><div class="cardtitle">Actividad reciente</div><div class="cardsub">Últimos movimientos</div></div></div><div class="timeline" id="recent"></div></div>
+          <div class="card"><div class="cardhead"><div><div class="cardtitle">Tendencia de peso</div><div class="cardsub">Lecturas registradas</div></div><button class="btn" onclick="openRecordModal('weight')">+ Peso</button></div><div class="chart"><canvas id="weightChart"></canvas></div></div>
+        </div>
+      </section>
+
+      <section id="profile" class="section">
+        <div class="head"><div><h2>Perfil de mascota</h2><p>Identidad y datos generales de la mascota activa.</p></div><div class="rowbtns"><button class="btn danger" onclick="deletePet(activePet().id)">Eliminar perfil</button><button class="btn primary" onclick="openPetModal(activePet())">Editar perfil</button></div></div>
+        <div class="profilegrid">
+          <div class="profilehero"><div class="avatar" id="profileAvatar">🐶</div><div class="profilename" id="profileName"></div><div id="profileSub"></div><div class="tags" id="profileTags"></div></div>
+          <div class="card"><div class="cardtitle">Información</div><div class="cardsub">Datos básicos del perfil</div><div class="details" id="profileDetails" style="margin-top:14px"></div></div>
+        </div>
+      </section>
+
+      <section id="vaccines" class="section">
+        <div class="head"><div><h2>Vacunas</h2><p>Historial y próximas dosis.</p></div><button class="btn primary" onclick="openRecordModal('vaccine')">+ Agregar vacuna</button></div>
+        <div class="filters"><input id="vaccineSearch" class="input" placeholder="Buscar…" oninput="renderVaccines()"><select id="vaccineFilter" class="select" style="max-width:220px" onchange="renderVaccines()"><option value="all">Todos</option><option value="done">Aplicadas</option><option value="future">Próximas</option></select></div>
+        <div class="card table-card" style="padding:0"><div class="tablewrap"><table><thead><tr><th>Fecha</th><th>Vacuna</th><th>Cobertura</th><th>Estado</th><th>Notas</th><th></th></tr></thead><tbody id="vaccineTable"></tbody></table></div></div>
+        <div class="vaccine-cards" id="vaccineCards"></div>
+      </section>
+
+      <section id="weight" class="section">
+        <div class="head"><div><h2>Peso</h2><p>Seguimiento por mascota.</p></div><button class="btn primary" onclick="openRecordModal('weight')">+ Registrar peso</button></div>
+        <div class="bento"><div class="card"><div class="chart" style="height:350px"><canvas id="weightChartLarge"></canvas></div></div><div class="card"><div class="cardtitle">Historial</div><div class="weightlist" id="weightList" style="margin-top:14px"></div></div></div>
+      </section>
+
+      <section id="appointments" class="section"><div class="head"><div><h2>Citas</h2><p>Visitas y recordatorios.</p></div><button class="btn primary" onclick="openRecordModal('appointment')">+ Nueva cita</button></div><div class="timeline" id="apptList"></div></section>
+      <section id="notes" class="section"><div class="head"><div><h2>Notas</h2><p>Tratamientos y observaciones.</p></div><button class="btn primary" onclick="openRecordModal('note')">+ Nueva nota</button></div><div class="notes" id="notesList"></div></section>
+    </main>
+  </div>
+</div>
+
+<nav class="mobile">
+  <button class="active" data-section="dashboard"><span>⌂</span>Inicio</button><button data-section="profile"><span>◉</span>Perfil</button><button data-section="vaccines"><span>✦</span>Vacunas</button><button data-section="weight"><span>↗</span>Peso</button><button data-section="appointments"><span>◷</span>Citas</button><button data-section="notes"><span>✎</span>Notas</button>
+</nav>
+
+<div class="modalbg" id="modalBg"><div class="modal"><h3 id="modalTitle"></h3><div id="modalBody"></div><div class="modalacts"><button class="btn danger" id="modalDeletePet" style="display:none;margin-right:auto" onclick="deletePet(editingPetId)">Eliminar perfil</button><button class="btn" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="saveModal()">Guardar</button></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY='pawfolio_v31';
+const LEGACY_MULTI='pawfolio_v3';
+const LEGACY_TROY='troycare_v1';
+
+const seedTroy={
+ id:'troy',name:'Troy',species:'Perro',breed:'Bulldog Francés',sex:'Macho',dob:'2025-01-28',microchip:'',avatar:'🐶',
+ vaccines:[
+  {id:1,date:'2025-03-14',name:'Nobivac Puppy DP Plus',coverage:'Moquillo canino (distemper) y parvovirus',status:'done',notes:'Primera vacuna de cachorro visible en la cartilla.'},
+  {id:2,date:'2025-03-29',name:'Vanguard Plus 5',coverage:'Moquillo, adenovirus/hepatitis infecciosa, parvovirus y parainfluenza',status:'done',notes:'Vacuna múltiple.'},
+  {id:3,date:'2025-04-29',name:'Refuerzo múltiple Nobivac + Nobivac Lepto',coverage:'Moquillo, adenovirus/hepatitis, parvovirus, parainfluenza y leptospirosis',status:'done',notes:'Refuerzo múltiple + leptospirosis.'},
+  {id:4,date:'2025-05-20',name:'Nobivac Rabies',coverage:'Rabia',status:'done',notes:''},
+  {id:5,date:'2025-06-11',name:'Nobivac KC',coverage:'Tos de las perreras: Bordetella bronchiseptica + parainfluenza canina',status:'done',notes:''},
+  {id:6,date:'2025-07-02',name:'GiardiaVax',coverage:'Giardiasis (Giardia)',status:'done',notes:''},
+  {id:7,date:'2026-05-20',name:'Nobivac DHPPI',coverage:'Moquillo, adenovirus/hepatitis infecciosa, parvovirus y parainfluenza',status:'done',notes:'Vacuna anual.'},
+  {id:8,date:'2026-05-20',name:'Nobivac Lepto',coverage:'Leptospirosis',status:'done',notes:'Vacuna anual.'},
+  {id:9,date:'2026-05-20',name:'Nobivac Rabies',coverage:'Rabia',status:'done',notes:'Vacuna anual.'},
+  {id:10,date:'2026-07-03',name:'Nobivac KC / Tos de las perreras',coverage:'Bordetella bronchiseptica + parainfluenza canina',status:'done',notes:'Refuerzo anual.'},
+  {id:11,date:'2026-07-03',name:'GiardiaVax',coverage:'Giardiasis (Giardia)',status:'done',notes:'Refuerzo anual.'},
+  {id:12,date:'2027-05-20',name:'Refuerzo múltiple + Lepto + Rabia',coverage:'DHPPI, leptospirosis y rabia',status:'future',notes:'Próximo refuerzo anotado en cartilla.'},
+  {id:13,date:'2027-07-03',name:'Tos de las perreras + Giardia',coverage:'Bordetella/parainfluenza y Giardia',status:'future',notes:'Próximo refuerzo anotado en cartilla.'}
+ ],
+ weights:[{id:1,date:'2026-05-20',kg:13.5,notes:'Registro de visita veterinaria.'},{id:2,date:'2026-07-03',kg:13.8,notes:'Registro aproximado según cartilla.'}],
+ appointments:[{id:1,date:'2027-05-20',title:'Refuerzo anual',notes:'Múltiple / DHPPI + Lepto + Rabia'},{id:2,date:'2027-07-03',title:'Refuerzo anual',notes:'Tos de las perreras + Giardia'}],
+ notes:[{id:1,date:'2026-05-20',title:'Antiparasitario',text:'Bravecto 1M Triple anotado en la visita.'},{id:2,date:'2026-05-20',title:'Desparasitación',text:'La cartilla indica: menores de 1 año, una vez al mes; mayores de 1 año, una vez cada dos meses.'}]
+};
+
+const clone=x=>JSON.parse(JSON.stringify(x));
+function normalizePet(p){
+ return {id:p.id||('pet_'+Date.now()),name:p.name||'Mascota',species:p.species||'Perro',breed:p.breed||'',sex:p.sex||'',dob:p.dob||'',microchip:p.microchip||'',avatar:p.avatar||emoji(p.species),vaccines:p.vaccines||[],weights:p.weights||[],appointments:p.appointments||[],notes:p.notes||[]};
+}
+function loadData(){
+ try{const n=localStorage.getItem(KEY);if(n)return JSON.parse(n)}catch(e){}
+ try{const m=localStorage.getItem(LEGACY_MULTI);if(m){const x=JSON.parse(m);if(x.pets)return x}}catch(e){}
+ try{const l=localStorage.getItem(LEGACY_TROY);if(l){const x=JSON.parse(l);const p=normalizePet({...seedTroy,vaccines:x.vaccines||seedTroy.vaccines,weights:x.weights||seedTroy.weights,appointments:x.appointments||seedTroy.appointments,notes:x.notes||seedTroy.notes});return {activePetId:p.id,pets:[p]}}}catch(e){}
+ return {activePetId:'troy',pets:[clone(seedTroy)]};
+}
+let data=loadData(), modalType=null, editingId=null, editingPetId=null;
+function activePet(){return data.pets.find(p=>p.id===data.activePetId)||data.pets[0]}
+function save(){localStorage.setItem(KEY,JSON.stringify(data));renderAll();requestAnimationFrame(()=>requestAnimationFrame(drawCharts))}
+function uid(){return Date.now()+Math.floor(Math.random()*999)}
+function emoji(s){s=(s||'').toLowerCase();if(s.includes('gato'))return'🐱';if(s.includes('ave'))return'🐦';if(s.includes('conejo'))return'🐰';return'🐶'}
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function fmt(d){if(!d)return'—';return new Date(d+'T12:00:00').toLocaleDateString('es-CR',{day:'2-digit',month:'short',year:'numeric'})}
+function future(d){return new Date(d+'T23:59:59')>new Date()}
+function age(dob){if(!dob)return'Edad no indicada';const d=new Date(dob+'T12:00:00'),n=new Date();let y=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth();if(n.getDate()<d.getDate())m--;if(m<0){y--;m+=12}return y>0?`${y} año${y!==1?'s':''} · ${m} mes${m!==1?'es':''}`:`${m} meses`}
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>el.classList.remove('show'),1600)}
+
+function switchPet(id){data.activePetId=id;save()}
+function switchSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.nav button,.mobile button').forEach(b=>b.classList.toggle('active',b.dataset.section===id));if(id==='weight'||id==='dashboard')requestAnimationFrame(()=>requestAnimationFrame(drawCharts))}
+document.querySelectorAll('.nav button,.mobile button').forEach(b=>b.addEventListener('click',()=>switchSection(b.dataset.section)));
+
+function renderAll(){renderShell();renderProfileSwitcher();renderProfile();renderDashboard();renderVaccines();renderWeights();renderAppointments();renderNotes();setTimeout(drawCharts,40)}
+function renderProfileSwitcher(){
+ const p=activePet(),box=document.getElementById('profileChips');
+ if(!box)return;
+ box.innerHTML=data.pets.map(x=>`<button class="pet-chip ${x.id===p.id?'active':''}" onclick="switchPet('${x.id}')" aria-pressed="${x.id===p.id?'true':'false'}"><span class="chip-avatar">${esc(x.avatar||emoji(x.species))}</span><span>${esc(x.name)}</span></button>`).join('');
+ const active=box.querySelector('.pet-chip.active');
+ if(active)requestAnimationFrame(()=>active.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}));
+}
+function renderShell(){
+ const p=activePet(),ws=[...p.weights].sort((a,b)=>a.date.localeCompare(b.date)),last=ws.at(-1),av=p.avatar||emoji(p.species);
+ document.getElementById('petSelect').innerHTML=data.pets.map(x=>`<option value="${x.id}" ${x.id===p.id?'selected':''}>${esc(x.name)} · ${esc(x.species)}</option>`).join('');
+ document.getElementById('petAvatar').textContent=av;document.getElementById('petName').textContent=p.name;document.getElementById('petMeta').textContent=[p.species,p.breed,p.sex].filter(Boolean).join(' · ');
+ document.getElementById('petAge').textContent=age(p.dob);document.getElementById('petWeightMini').textContent=last?`Peso ${last.kg.toFixed(1)} kg`:'Peso —';
+ document.getElementById('heroTitle').textContent=p.name;document.getElementById('heroAge').textContent=age(p.dob);document.getElementById('chipSpecies').textContent=`${emoji(p.species)} ${p.species}`;document.getElementById('chipLastWeight').textContent=last?`⚖ ${last.kg.toFixed(1)} kg`:'⚖ Sin peso';
+ const nextVax=[...p.vaccines].filter(v=>v.status==='future'&&future(v.date)).sort((a,b)=>a.date.localeCompare(b.date))[0];
+ document.getElementById('chipNextVax').textContent=nextVax?`✦ Próx. ${fmt(nextVax.date)}`:'✦ Sin refuerzo pendiente';
+}
+function renderProfile(){
+ const p=activePet(),ws=[...p.weights].sort((a,b)=>a.date.localeCompare(b.date)),last=ws.at(-1),av=p.avatar||emoji(p.species);
+ document.getElementById('profileAvatar').textContent=av;document.getElementById('profileName').textContent=p.name;document.getElementById('profileSub').textContent=[p.species,p.breed].filter(Boolean).join(' · ');
+ document.getElementById('profileTags').innerHTML=[p.sex,age(p.dob),last?`${last.kg.toFixed(1)} kg`:null].filter(Boolean).map(x=>`<span class="tag">${esc(x)}</span>`).join('');
+ const vals=[['Nombre',p.name],['Tipo de mascota',p.species],['Raza',p.breed||'—'],['Sexo',p.sex||'—'],['Fecha de nacimiento',p.dob?fmt(p.dob):'—'],['Edad',age(p.dob)],['Microchip',p.microchip||'No registrado'],['Último peso',last?`${last.kg.toFixed(1)} kg`:'—']];
+ document.getElementById('profileDetails').innerHTML=vals.map(([a,b])=>`<div class="detail"><div class="dlabel">${a}</div><div class="dvalue">${esc(b)}</div></div>`).join('');
+}
+function renderDashboard(){
+ const p=activePet(),ws=[...p.weights].sort((a,b)=>a.date.localeCompare(b.date)),last=ws.at(-1),prev=ws.length>1?ws.at(-2):null;
+ const apps=p.appointments.filter(a=>future(a.date)).sort((a,b)=>a.date.localeCompare(b.date)),next=apps[0];
+ const nextVax=[...p.vaccines].filter(v=>v.status==='future'&&future(v.date)).sort((a,b)=>a.date.localeCompare(b.date))[0];
+ const overdue=[...p.vaccines].filter(v=>v.status==='future'&&!future(v.date));
+ const statusEl=document.getElementById('heroVaxStatus');
+ if(!p.vaccines.length){statusEl.textContent='Sin vacunas registradas';statusEl.className='vax-status due'}
+ else if(overdue.length){statusEl.textContent=`${overdue.length} vacuna${overdue.length>1?'s':''} pendiente${overdue.length>1?'s':''}`;statusEl.className='vax-status due'}
+ else{statusEl.textContent='Vacunas al día';statusEl.className='vax-status ok'}
+ document.getElementById('statWeight').textContent=last?`${last.kg.toFixed(1)} kg`:'—';
+ document.getElementById('statWeightDate').textContent=last?fmt(last.date):'Sin registros';
+ const change=(last&&prev)?last.kg-prev.kg:null;
+ document.getElementById('statWeightChange').textContent=change===null?'—':`${change>0?'+':''}${change.toFixed(1)} kg`;
+ document.getElementById('statNextVax').textContent=nextVax?fmt(nextVax.date):'—';
+ document.getElementById('statNextVaxName').textContent=nextVax?nextVax.name:'Sin refuerzo programado';
+ document.getElementById('statAppts').textContent=apps.length;
+ document.getElementById('nextDate').textContent=next?fmt(next.date):'—';document.getElementById('nextTitle').textContent=next?next.title:'Sin cita programada';document.getElementById('nextNote').textContent=next?next.notes:'';document.getElementById('nextDays').textContent=next?`${Math.max(0,Math.ceil((new Date(next.date+'T12:00:00')-new Date())/86400000))} días`:'—';
+ const e=[];p.vaccines.filter(v=>v.status==='done').forEach(v=>e.push({date:v.date,title:v.name,desc:v.coverage,type:'Vacuna',cls:'done'}));p.weights.forEach(w=>e.push({date:w.date,title:`Peso · ${w.kg.toFixed(1)} kg`,desc:w.notes||'',type:'Peso',cls:'note'}));e.sort((a,b)=>b.date.localeCompare(a.date));
+ document.getElementById('recent').innerHTML=e.slice(0,6).map(x=>`<div class="item"><div class="date">${fmt(x.date)}</div><div><div class="ititle">${esc(x.title)}</div><div class="idesc">${esc(x.desc)}</div></div><span class="badge ${x.cls}">${x.type}</span></div>`).join('')||'<div class="muted">Sin actividad.</div>';
+}
+function renderVaccines(){
+ const p=activePet(),q=(document.getElementById('vaccineSearch')?.value||'').toLowerCase(),f=document.getElementById('vaccineFilter')?.value||'all';
+ let a=[...p.vaccines].sort((x,y)=>y.date.localeCompare(x.date));
+ a=a.filter(v=>(v.name+' '+v.coverage+' '+(v.notes||'')).toLowerCase().includes(q)&&(f==='all'||v.status===f));
+
+ document.getElementById('vaccineTable').innerHTML=a.map(v=>`<tr>
+   <td>${fmt(v.date)}</td>
+   <td><b>${esc(v.name)}</b></td>
+   <td class="coverage">${esc(v.coverage)}</td>
+   <td><span class="badge ${v.status==='done'?'done':'future'}">${v.status==='done'?'Aplicada':'Próxima'}</span></td>
+   <td class="coverage">${esc(v.notes||'')}</td>
+   <td><div class="rowbtns"><button class="mini" onclick="editRecord('vaccine',${v.id})">Editar</button><button class="mini" onclick="removeRecord('vaccine',${v.id})">×</button></div></td>
+ </tr>`).join('')||'<tr><td colspan="6">Sin registros.</td></tr>';
+
+ const cards=document.getElementById('vaccineCards');
+ if(cards){
+   cards.innerHTML=a.map(v=>{
+     const summary=v.coverage||v.notes||'Sin detalles adicionales';
+     return `<article class="vax-card" id="vax-card-${v.id}">
+       <button class="vax-card-main" type="button" onclick="toggleVaccineCard(${v.id})" aria-expanded="false">
+         <div>
+           <div class="vax-card-topline">
+             <span class="vax-date">${fmt(v.date)}</span>
+             <span class="badge ${v.status==='done'?'done':'future'}">${v.status==='done'?'Aplicada':'Próxima'}</span>
+           </div>
+           <div class="vax-name">${esc(v.name)}</div>
+           <div class="vax-summary">${esc(summary)}</div>
+         </div>
+         <div class="vax-side"><span class="vax-chevron">⌄</span></div>
+       </button>
+       <div class="vax-details">
+         <div class="vax-detail-row">
+           <div class="vax-detail-label">Cobertura</div>
+           <div class="vax-detail-value">${esc(v.coverage||'Sin información')}</div>
+         </div>
+         <div class="vax-detail-row">
+           <div class="vax-detail-label">Notas</div>
+           <div class="vax-detail-value">${esc(v.notes||'Sin notas adicionales')}</div>
+         </div>
+         <div class="vax-actions">
+           <button class="mini" onclick="editRecord('vaccine',${v.id})">Editar</button>
+           <button class="mini" onclick="removeRecord('vaccine',${v.id})">Eliminar</button>
+         </div>
+       </div>
+     </article>`;
+   }).join('')||'<div class="card muted">Sin registros de vacunas.</div>';
+ }
+}
+function toggleVaccineCard(id){
+ const card=document.getElementById('vax-card-'+id);
+ if(!card)return;
+ const open=card.classList.toggle('open');
+ const btn=card.querySelector('.vax-card-main');
+ if(btn)btn.setAttribute('aria-expanded',open?'true':'false');
+}
+function renderWeights(){const a=[...activePet().weights].sort((x,y)=>y.date.localeCompare(x.date));document.getElementById('weightList').innerHTML=a.map(w=>`<div class="weightrow"><div><b>${w.kg.toFixed(1)} kg</b><div class="muted">${fmt(w.date)} · ${esc(w.notes||'')}</div></div><div class="rowbtns"><button class="mini" onclick="editRecord('weight',${w.id})">Editar</button><button class="mini" onclick="removeRecord('weight',${w.id})">×</button></div></div>`).join('')||'<div class="muted">Sin registros.</div>'}
+function renderAppointments(){const a=[...activePet().appointments].sort((x,y)=>x.date.localeCompare(y.date));document.getElementById('apptList').innerHTML=a.map(x=>`<div class="item"><div class="date">${fmt(x.date)}</div><div><div class="ititle">${esc(x.title)}</div><div class="idesc">${esc(x.notes||'')}</div></div><div class="rowbtns"><span class="badge ${future(x.date)?'future':'done'}">${future(x.date)?'Programada':'Pasada'}</span><button class="mini" onclick="editRecord('appointment',${x.id})">Editar</button><button class="mini" onclick="removeRecord('appointment',${x.id})">×</button></div></div>`).join('')||'<div class="muted">Sin citas.</div>'}
+function renderNotes(){const a=[...activePet().notes].sort((x,y)=>y.date.localeCompare(x.date));document.getElementById('notesList').innerHTML=a.map(x=>`<div class="notecard"><div class="date">${fmt(x.date)}</div><h4>${esc(x.title)}</h4><p>${esc(x.text)}</p><div class="rowbtns" style="margin-top:12px"><button class="mini" onclick="editRecord('note',${x.id})">Editar</button><button class="mini" onclick="removeRecord('note',${x.id})">Eliminar</button></div></div>`).join('')||'<div class="muted">Sin notas.</div>'}
+
+function openPetModal(p=null){
+ modalType='pet';editingPetId=p?.id||null;editingId=null;document.getElementById('modalBg').classList.add('show');document.getElementById('modalTitle').textContent=p?'Editar mascota':'Nueva mascota';
+ const del=document.getElementById('modalDeletePet');if(del)del.style.display=p?'inline-flex':'none';
+ document.getElementById('modalBody').innerHTML=`<div class="form">
+ <div class="group"><label>Nombre</label><input id="p_name" class="input" value="${esc(p?.name||'')}"></div>
+ <div class="group"><label>Tipo de mascota</label><select id="p_species" class="select">${['Perro','Gato','Ave','Conejo','Otro'].map(x=>`<option ${p?.species===x?'selected':''}>${x}</option>`).join('')}</select></div>
+ <div class="group"><label>Raza</label><input id="p_breed" class="input" value="${esc(p?.breed||'')}"></div>
+ <div class="group"><label>Sexo</label><select id="p_sex" class="select"><option value="">No indicado</option><option ${p?.sex==='Macho'?'selected':''}>Macho</option><option ${p?.sex==='Hembra'?'selected':''}>Hembra</option></select></div>
+ <div class="group"><label>Fecha de nacimiento</label><input id="p_dob" class="input" type="date" value="${p?.dob||''}"></div>
+ <div class="group"><label>Microchip</label><input id="p_microchip" class="input" value="${esc(p?.microchip||'')}"></div>
+ <div class="group"><label>Avatar</label><select id="p_avatar" class="select">${['🐶','🐱','🐰','🐦','🐾'].map(x=>`<option ${p?.avatar===x?'selected':''}>${x}</option>`).join('')}</select></div>
+ </div>`;
+}
+function openRecordModal(type,item=null){
+ modalType=type;editingId=item?.id||null;editingPetId=null;document.getElementById('modalBg').classList.add('show');const del=document.getElementById('modalDeletePet');if(del)del.style.display='none';
+ const names={vaccine:'Vacuna',weight:'Peso',appointment:'Cita',note:'Nota'};document.getElementById('modalTitle').textContent=(item?'Editar ':'Nuevo registro · ')+names[type];
+ const b=document.getElementById('modalBody');
+ if(type==='vaccine')b.innerHTML=`<div class="form"><div class="group"><label>Fecha</label><input id="f_date" class="input" type="date" value="${item?.date||''}"></div><div class="group"><label>Estado</label><select id="f_status" class="select"><option value="done" ${item?.status==='done'?'selected':''}>Aplicada</option><option value="future" ${item?.status==='future'?'selected':''}>Próxima</option></select></div><div class="group full"><label>Vacuna</label><input id="f_name" class="input" value="${esc(item?.name||'')}"></div><div class="group full"><label>Cobertura</label><textarea id="f_cov" class="textarea" rows="3">${esc(item?.coverage||'')}</textarea></div><div class="group full"><label>Notas</label><textarea id="f_notes" class="textarea" rows="3">${esc(item?.notes||'')}</textarea></div></div>`;
+ else if(type==='weight')b.innerHTML=`<div class="form"><div class="group"><label>Fecha</label><input id="f_date" class="input" type="date" value="${item?.date||''}"></div><div class="group"><label>Peso (kg)</label><input id="f_kg" class="input" type="number" step="0.1" value="${item?.kg??''}"></div><div class="group full"><label>Notas</label><textarea id="f_notes" class="textarea" rows="3">${esc(item?.notes||'')}</textarea></div></div>`;
+ else if(type==='appointment')b.innerHTML=`<div class="form"><div class="group"><label>Fecha</label><input id="f_date" class="input" type="date" value="${item?.date||''}"></div><div class="group"><label>Título</label><input id="f_title" class="input" value="${esc(item?.title||'')}"></div><div class="group full"><label>Detalles</label><textarea id="f_notes" class="textarea" rows="4">${esc(item?.notes||'')}</textarea></div></div>`;
+ else b.innerHTML=`<div class="form"><div class="group"><label>Fecha</label><input id="f_date" class="input" type="date" value="${item?.date||''}"></div><div class="group"><label>Título</label><input id="f_title" class="input" value="${esc(item?.title||'')}"></div><div class="group full"><label>Nota</label><textarea id="f_text" class="textarea" rows="5">${esc(item?.text||'')}</textarea></div></div>`;
+}
+function closeModal(){document.getElementById('modalBg').classList.remove('show');const del=document.getElementById('modalDeletePet');if(del)del.style.display='none';modalType=null;editingId=null;editingPetId=null}
+function upsert(arr,o){const i=arr.findIndex(x=>x.id===o.id);if(i>=0)arr[i]=o;else arr.push(o)}
+function saveModal(){
+ const g=id=>document.getElementById(id)?.value,p=activePet();
+ if(modalType==='pet'){
+  const name=(g('p_name')||'').trim();if(!name)return toast('Agrega un nombre');
+  const obj={name,species:g('p_species'),breed:g('p_breed')||'',sex:g('p_sex')||'',dob:g('p_dob')||'',microchip:g('p_microchip')||'',avatar:g('p_avatar')||emoji(g('p_species'))};
+  if(editingPetId)Object.assign(data.pets.find(x=>x.id===editingPetId),obj);
+  else{const np=normalizePet({id:'pet_'+uid(),...obj});data.pets.push(np);data.activePetId=np.id}
+  closeModal();save();return toast('Perfil guardado');
+ }
+ if(!g('f_date'))return toast('Agrega una fecha');
+ if(modalType==='vaccine')upsert(p.vaccines,{id:editingId||uid(),date:g('f_date'),name:g('f_name')||'Vacuna',coverage:g('f_cov')||'',status:g('f_status'),notes:g('f_notes')||''});
+ if(modalType==='weight'){const kg=parseFloat(g('f_kg'));if(!kg)return toast('Ingresa un peso válido');upsert(p.weights,{id:editingId||uid(),date:g('f_date'),kg,notes:g('f_notes')||''})}
+ if(modalType==='appointment')upsert(p.appointments,{id:editingId||uid(),date:g('f_date'),title:g('f_title')||'Cita veterinaria',notes:g('f_notes')||''});
+ if(modalType==='note')upsert(p.notes,{id:editingId||uid(),date:g('f_date'),title:g('f_title')||'Nota',text:g('f_text')||''});
+ closeModal();save();toast('Registro guardado');
+}
+function deletePet(id){
+ const pet=data.pets.find(x=>x.id===id);if(!pet)return;
+ if(data.pets.length<=1){toast('Debe existir al menos una mascota');return}
+ const ok=confirm(`¿Eliminar el perfil de ${pet.name}?\n\nSe borrarán sus vacunas, pesos, citas y notas. Esta acción no se puede deshacer.`);if(!ok)return;
+ data.pets=data.pets.filter(x=>x.id!==id);
+ if(data.activePetId===id)data.activePetId=data.pets[0].id;
+ closeModal();save();switchSection('dashboard');toast(`Perfil de ${pet.name} eliminado`);
+}
+function editRecord(type,id){const p=activePet(),a={vaccine:p.vaccines,weight:p.weights,appointment:p.appointments,note:p.notes}[type];openRecordModal(type,a.find(x=>x.id===id))}
+function removeRecord(type,id){const p=activePet(),k={vaccine:'vaccines',weight:'weights',appointment:'appointments',note:'notes'}[type];if(confirm('¿Eliminar este registro?')){p[k]=p[k].filter(x=>x.id!==id);save()}}
+function exportData(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Pawfolio_backup.json';a.click();URL.revokeObjectURL(a.href)}
+function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x.pets)throw new Error();data=x;save();toast('Datos importados')}catch(err){toast('Archivo no válido')}};r.readAsText(f);e.target.value=''}
+function draw(id){
+ const p=activePet(),c=document.getElementById(id);if(!c)return;const r=c.getBoundingClientRect();if(r.width<10)return;const d=window.devicePixelRatio||1;c.width=r.width*d;c.height=r.height*d;const ctx=c.getContext('2d');ctx.scale(d,d);const w=r.width,h=r.height,a=[...p.weights].sort((x,y)=>x.date.localeCompare(y.date));ctx.clearRect(0,0,w,h);if(!a.length){ctx.fillStyle='#64748b';ctx.fillText('Sin datos',16,24);return}
+ const pad={l:40,r:18,t:22,b:34},vals=a.map(x=>x.kg);let min=Math.min(...vals)-.5,max=Math.max(...vals)+.5;if(min===max){min--;max++}const X=i=>a.length===1?(pad.l+w-pad.r)/2:pad.l+(w-pad.l-pad.r)*i/(a.length-1),Y=v=>pad.t+(max-v)/(max-min)*(h-pad.t-pad.b);
+ ctx.strokeStyle='#edf2f7';for(let i=0;i<4;i++){const yy=pad.t+(h-pad.t-pad.b)*i/3;ctx.beginPath();ctx.moveTo(pad.l,yy);ctx.lineTo(w-pad.r,yy);ctx.stroke()}
+ ctx.beginPath();a.forEach((x,i)=>i?ctx.lineTo(X(i),Y(x.kg)):ctx.moveTo(X(i),Y(x.kg)));ctx.strokeStyle='#3b82f6';ctx.lineWidth=2;ctx.stroke();
+ a.forEach((x,i)=>{const xx=X(i),yy=Y(x.kg);ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(xx,yy,5,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#3b82f6';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='#0f172a';ctx.font='800 11px sans-serif';ctx.textAlign='center';ctx.fillText(x.kg.toFixed(1)+' kg',xx,yy-12);ctx.fillStyle='#94a3b8';ctx.font='10px sans-serif';ctx.fillText(new Date(x.date+'T12:00:00').toLocaleDateString('es-CR',{day:'2-digit',month:'short'}),xx,h-10)})
+}
+function drawCharts(){draw('weightChart');draw('weightChartLarge')}
+window.addEventListener('resize',()=>setTimeout(drawCharts,80));
+document.getElementById('modalBg').addEventListener('click',e=>{if(e.target.id==='modalBg')closeModal()});
+renderAll();
+</script>
+</body>
+</html>
